@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ConfPlus</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <img
+          src="images/logo1.png"
+          alt="ConfPlus logo"
+          class="nav__logo"
+          id="logo"
+        />
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">About</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Services</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Contact</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn" href="#">Login</a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <div class="wrapper" style="display: none;">
+        <span class="icon-close"><i class="fa fa-close"></i></span>
+
+        <div class="form-box login ">
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="login(event)">
+                <div class="input-box">
+                    <span class="icon"><i class="fa fa-user"></i></span>
+                    <input type="email" id="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa fa-lock"></i>
+                    </span>
+                    <input type="password" id="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forget">
+                    <label><input type="checkbox">Remember me</label>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+      <div class="header--content">
+        <h1>
+          We are
+          <!-- Green highlight effect -->
+          <span class="highlight">ConfPlus</span>
+          <!-- a <br /> -->
+          <span class="highlight">Conference Management System</span>
+        </h1>
+        <h4>All Conferences in your hands.</h4>
+        <button class="btn--text">Learn more &DownArrow;</button>
+        <img
+          src="images/cof.png"
+          class="header__img"
+          alt="Conferences images"
+        />
+      </div>
+    </header>
+
+    <script src="../script.js"></script>
+    <script src="js/login.js"></script>
+
+
+
+  </body>
+</html>

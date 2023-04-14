@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/uploadDocument.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="card" id="form">
+      <label for="title">Paper Title:</label>
+      <input type="text" id="title" name="title" required />
+      <br />
+      <label for="abstract">Paper Abstract:</label>
+      <textarea id="abstract" name="abstract" rows="3" required></textarea>
+      <br />
+      <label for="authors">Paper Authors:</label>
+      <div id="authors">
+        <div class="author">
+          <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+          <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+          <input type="email" id="email" name="email" placeholder="Email" required />
+
+          <select id="affiliation" name="affiliation" required>
+            <option value="">Select Affiliation</option>
+          </select>
+          <br />
+
+          <input type="checkbox" name="presenter" id="presenter" />Presenter
+          <br />
+          <button onclick="remove()" class="btn btn-danger" type="button">Remove</button>
+          <br />
+        </div>
+      </div>
+
+      <button onclick="addAuthor()" class="btn btn-info" type="button">Add Author</button>
+      <br />
+      <label for="file">Paper PDF:</label>
+      <input class="btn btn-info" type="file" id="file" name="file" required />
+      <br />
+      <input class="btn btn-success mt-4" type="submit" value="Submit Paper" />
+    </form>
+    <script src="js/uploadDocument.js"></script>
+  </body>
+</html>
