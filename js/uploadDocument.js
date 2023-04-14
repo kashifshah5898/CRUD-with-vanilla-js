@@ -30,38 +30,30 @@ const settingAffiliation = () => {
 };
 
 const handleDeleteButtonClick = (id) => {
-  // let ids = id - 2;
-  // allAuthors.splice(ids - 1, 1);
-  // const removeElement = document.getElementsByClassName(ids);
-  // Array.from(removeElement).forEach(function (element) {
-  //   element.remove();
-  // });
-  // console.log(allAuthors);
-  const element = document.getElementById(id);
-  console.log(id);
-  if (element) {
-    element.parentNode.removeChild(element);
-  }
+  let ids = id - 2;
+  allAuthors.splice(ids - 1, 1);
+  const removeElement = document.getElementsByClassName(ids);
+  Array.from(removeElement).forEach(function (element) {
+    element.remove();
+  });
+  console.log(allAuthors);
 };
 
 const showAllAuthors = (aName) => {
   const showAllAuthorsDiv = document.querySelector("#showAllAuthorsId");
   const authorNameParagraph = document.createElement("p");
   authorNameParagraph.textContent = allAuthors.length + ". " + aName;
-
-  authorNameParagraph.setAttribute("id", "author-" + allAuthors.length);
+  authorNameParagraph.classList.add(allAuthors.length);
 
   const deleteButton = document.createElement("button");
-  deleteButton.setAttribute("id", "delete-" + allAuthors.length);
   deleteButton.textContent = "Delete";
   deleteButton.classList.add("btn");
   deleteButton.classList.add("btn-danger");
   deleteButton.classList.add("ml30");
   deleteButton.classList.add("ml-2");
+  deleteButton.classList.add(allAuthors.length);
   deleteButton.addEventListener("click", function () {
-    // handleDeleteButtonClick(allAuthors.length);
-    handleDeleteButtonClick("author-" + allAuthors.length);
-    handleDeleteButtonClick("delete-" + allAuthors.length);
+    handleDeleteButtonClick(allAuthors.length);
   });
 
   const breakLine = document.createElement("br");
