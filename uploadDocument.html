@@ -19,26 +19,26 @@
   <body>
     <form class="card" id="form">
       <label for="title">Paper Title:</label>
-      <input type="text" id="title" name="title" required />
+      <input type="text" id="title" name="title" />
       <br />
       <label for="abstract">Paper Abstract:</label>
-      <textarea id="abstract" name="abstract" rows="3" required></textarea>
+      <textarea id="abstract" name="abstract" rows="3"></textarea>
       <br />
       <label for="authors">Paper Authors:</label>
       <div id="authors">
         <div class="author">
-          <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
-          <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
-          <input type="email" id="email" name="email" placeholder="Email" required />
+          <input type="text" id="firstName" name="firstName" placeholder="First Name" />
+          <input type="text" id="lastName" name="lastName" placeholder="Last Name" />
+          <input type="email" id="email" name="email" placeholder="Email" />
 
-          <select id="affiliation" name="affiliation" required>
+          <select id="affiliation" name="affiliation">
             <option value="">Select Affiliation</option>
           </select>
           <br />
 
           <input type="checkbox" name="presenter" id="presenter" />Presenter
           <br />
-          <button onclick="remove()" class="btn btn-danger" type="button">Remove</button>
+          <div class="mt-2 container" id="showAllAuthorsId"></div>
           <br />
         </div>
       </div>
@@ -46,7 +46,7 @@
       <button onclick="addAuthor()" class="btn btn-info" type="button">Add Author</button>
       <br />
       <label for="file">Paper PDF:</label>
-      <input class="btn btn-info" type="file" id="file" name="file" required />
+      <input class="btn btn-info" type="file" id="file" name="file" />
       <br />
       <input class="btn btn-success mt-4" type="submit" value="Submit Paper" />
     </form>
