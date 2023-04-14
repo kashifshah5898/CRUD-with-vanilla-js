@@ -19,10 +19,10 @@
   <body>
     <form class="card" id="form">
       <label for="title">Paper Title:</label>
-      <input type="text" id="title" name="title" />
+      <input type="text" id="title" name="title" required />
       <br />
       <label for="abstract">Paper Abstract:</label>
-      <textarea id="abstract" name="abstract" rows="3"></textarea>
+      <textarea id="abstract" name="abstract" rows="3" required></textarea>
       <br />
       <label for="authors">Paper Authors:</label>
       <div id="authors">
@@ -40,13 +40,14 @@
           <br />
           <div class="mt-2 container" id="showAllAuthorsId"></div>
           <br />
+          <button onclick="remove()" class="btn btn-danger" type="button">Remove</button>
         </div>
       </div>
 
       <button onclick="addAuthor()" class="btn btn-info" type="button">Add Author</button>
       <br />
       <label for="file">Paper PDF:</label>
-      <input class="btn btn-info" type="file" id="file" name="file" />
+      <input class="btn btn-info" type="file" id="file" name="file" required />
       <br />
       <input class="btn btn-success mt-4" type="submit" value="Submit Paper" />
     </form>

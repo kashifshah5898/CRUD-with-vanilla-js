@@ -29,14 +29,11 @@ const settingAffiliation = () => {
   });
 };
 
-const handleDeleteButtonClick = (id) => {
-  let ids = id - 2;
-  allAuthors.splice(ids - 1, 1);
-  const removeElement = document.getElementsByClassName(ids);
-  Array.from(removeElement).forEach(function (element) {
-    element.remove();
-  });
-  console.log(allAuthors);
+const remove = () => {
+  const removeElement = document.getElementById("showAllAuthorsId");
+  removeElement.innerHTML = "";
+
+  allAuthors = [];
 };
 
 const showAllAuthors = (aName) => {
@@ -45,22 +42,10 @@ const showAllAuthors = (aName) => {
   authorNameParagraph.textContent = allAuthors.length + ". " + aName;
   authorNameParagraph.classList.add(allAuthors.length);
 
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.classList.add("btn");
-  deleteButton.classList.add("btn-danger");
-  deleteButton.classList.add("ml30");
-  deleteButton.classList.add("ml-2");
-  deleteButton.classList.add(allAuthors.length);
-  deleteButton.addEventListener("click", function () {
-    handleDeleteButtonClick(allAuthors.length);
-  });
-
   const breakLine = document.createElement("br");
 
   showAllAuthorsDiv.appendChild(authorNameParagraph);
 
-  showAllAuthorsDiv.appendChild(deleteButton);
   showAllAuthorsDiv.appendChild(breakLine);
 };
 
@@ -128,9 +113,7 @@ form.addEventListener("submit", async (event) => {
     ],
   };
 
-  const data = JSON.stringify(myObj);
-
-  console.warn("data to write in json: ", data);
+  console.log("data to write in json: ", myObj);
   allAuthors = [];
   form.reset();
 });
