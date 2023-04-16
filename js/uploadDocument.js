@@ -26,11 +26,6 @@ const settingAffiliation = () => {
   });
 };
 
-const remove = () => {
-  const removeElement = document.getElementById("showAllAuthorsId");
-  removeElement.innerHTML = "";
-};
-
 const showAllAuthors = (aName) => {
   const showAllAuthorsDiv = document.querySelector("#showAllAuthorsId");
   let authorId = allAuthors.length;
@@ -174,3 +169,5 @@ gettingId();
 
 // npm install -g json-server
 // json-server --watch papers.json
+
+//My whatsapp number is +92-312-6292779 you can also contact me here if you have any questions or any further work
