@@ -15,8 +15,6 @@ const gettingResponse = async () => {
   settingAffiliation();
 };
 
-gettingResponse();
-
 const settingAffiliation = () => {
   const select = document.querySelector("#affiliation");
 
@@ -31,22 +29,36 @@ const settingAffiliation = () => {
 const remove = () => {
   const removeElement = document.getElementById("showAllAuthorsId");
   removeElement.innerHTML = "";
-
-  allAuthors = [];
 };
 
 const showAllAuthors = (aName) => {
   const showAllAuthorsDiv = document.querySelector("#showAllAuthorsId");
+  let authorId = allAuthors.length;
   const authorNameParagraph = document.createElement("p");
-  authorNameParagraph.textContent = allAuthors.length + ". " + aName;
-  authorNameParagraph.classList.add(allAuthors.length);
+  authorNameParagraph.textContent = `${authorId}. ${aName}`;
+  authorNameParagraph.classList.add(`delete${authorId}`);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.classList.add("btn", "btn-danger", "ml30", `delete${authorId}`);
+  deleteButton.addEventListener("click", () => {
+    handleDeleteButtonClick(`delete${authorId}`, authorId);
+  });
 
   const breakLine = document.createElement("br");
-
+  breakLine.classList.add(`delete${authorId}`);
   showAllAuthorsDiv.appendChild(authorNameParagraph);
-
+  showAllAuthorsDiv.appendChild(deleteButton);
   showAllAuthorsDiv.appendChild(breakLine);
 };
+
+function handleDeleteButtonClick(index, authorId) {
+  allAuthors[authorId - 1] = "thatSpecificIndex";
+  const removeElement = document.getElementsByClassName(index);
+  Array.from(removeElement).forEach((element) => {
+    element.parentNode.removeChild(element);
+  });
+}
 
 let allAuthors = [];
 const addAuthor = () => {
@@ -101,16 +113,15 @@ form.addEventListener("submit", async (event) => {
     }
   }
 
+  allAuthors = allAuthors.filter((item) => item != "thatSpecificIndex");
+  console.log("allAuthors", allAuthors);
   const myObj = {
     id: id,
     title: title.value,
     abstract: abstract.value,
     file: file.value,
     authors: allAuthors,
-    reviewers: [
-      users[randomIndexes[0]].first_name + " " + users[randomIndexes[0]].last_name,
-      users[randomIndexes[1]].first_name + " " + users[randomIndexes[1]].last_name,
-    ],
+    reviewers: [users[randomIndexes[0]], users[randomIndexes[1]]],
   };
 
   await addDataToJson(myObj);
@@ -134,7 +145,7 @@ const gettingId = () => {
     })
     .catch((error) => {
       console.log(error);
-      alert("error", error);
+      // alert("error", error);
     });
 };
 
@@ -158,6 +169,7 @@ const addDataToJson = (payLoad) => {
 };
 
 let id;
+gettingResponse();
 gettingId();
 
 // npm install -g json-server
