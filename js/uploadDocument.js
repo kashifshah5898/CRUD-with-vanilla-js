@@ -109,7 +109,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   allAuthors = allAuthors.filter((item) => item != "thatSpecificIndex");
-  console.log("allAuthors", allAuthors);
+
   const myObj = {
     id: id,
     title: title.value,
@@ -139,8 +139,7 @@ const gettingId = () => {
       id = result.length + 1;
     })
     .catch((error) => {
-      console.log(error);
-      // alert("error", error);
+      alert("error", error);
     });
 };
 
@@ -160,7 +159,7 @@ const addDataToJson = (payLoad) => {
   fetch("http://localhost:3000/papers", requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+    .catch((error) => alert("error", error));
 };
 
 let id;
