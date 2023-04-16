@@ -1,5 +1,4 @@
 let allInstiutionsRes, allInstiutions;
-
 let title = document.getElementById("title");
 let abstract = document.getElementById("abstract");
 let firstName = document.getElementById("firstName");
@@ -103,6 +102,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   const myObj = {
+    id: id,
     title: title.value,
     abstract: abstract.value,
     file: file.value,
@@ -113,7 +113,49 @@ form.addEventListener("submit", async (event) => {
     ],
   };
 
-  console.log("data to write in json: ", myObj);
-  allAuthors = [];
-  form.reset();
+  await addDataToJson(myObj);
+
+  // allAuthors = [];
+  // form.reset();
+  // remove();
 });
+
+const gettingId = () => {
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  fetch("http://localhost:3000/papers", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      result = JSON.parse(result);
+      id = result.length + 1;
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("error", error);
+    });
+};
+
+const addDataToJson = (payLoad) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify(payLoad);
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("http://localhost:3000/papers", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+};
+
+let id;
+gettingId();
