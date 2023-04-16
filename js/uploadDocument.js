@@ -114,10 +114,10 @@ form.addEventListener("submit", async (event) => {
   };
 
   await addDataToJson(myObj);
-
-  // allAuthors = [];
-  // form.reset();
-  // remove();
+  alert("Developed By Kashif_65 ( Fiverr.com ) ");
+  allAuthors = [];
+  form.reset();
+  remove();
 });
 
 const gettingId = () => {
@@ -159,3 +159,6 @@ const addDataToJson = (payLoad) => {
 
 let id;
 gettingId();
+
+// npm install -g json-server
+// json-server --watch papers.json
