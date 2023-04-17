@@ -88,17 +88,8 @@ select {
   vertical-align: middle;
 }
 
-/* CSS code to add a class called "btn" to the buttons */
-/* #showAllAuthorsId button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-} */
-
 .ml30 {
-  margin-left: 30rem !important;
+  position: absolute !important;
+  margin-left: 50% !important;
+  margin-top: 7% !important;
 }

@@ -7,11 +7,11 @@ let email = document.getElementById("email");
 let affiliation = document.getElementById("affiliation");
 let presenter = document.getElementById("presenter");
 let file = document.getElementById("file");
+let affiliationName = "";
 
 const gettingResponse = async () => {
   allInstiutionsRes = await fetch("institutions.json");
   allInstiutions = await allInstiutionsRes.json();
-
   settingAffiliation();
 };
 
@@ -26,12 +26,36 @@ const settingAffiliation = () => {
   });
 };
 
-const showAllAuthors = (aName) => {
+const showAllAuthors = (author) => {
   const showAllAuthorsDiv = document.querySelector("#showAllAuthorsId");
   let authorId = allAuthors.length;
   const authorNameParagraph = document.createElement("p");
-  authorNameParagraph.textContent = `${authorId}. ${aName}`;
+  authorNameParagraph.textContent = `${authorId}. Name:  ${author.firstName} ${author.lastName}`;
   authorNameParagraph.classList.add(`delete${authorId}`);
+
+  const breakLine3 = document.createElement("br");
+  breakLine3.classList.add(`delete${authorId}`);
+
+  const authorEmailParagraph = document.createElement("p");
+  authorEmailParagraph.textContent = `Email:  ${author.email}`;
+  authorEmailParagraph.classList.add(`delete${authorId}`);
+
+  const breakLine4 = document.createElement("hr");
+  breakLine4.classList.add(`delete${authorId}`);
+
+  const authorAffilationParagraph = document.createElement("p");
+  authorAffilationParagraph.textContent = `Affiliation:  ${author.affiliation}`;
+  authorAffilationParagraph.classList.add(`delete${authorId}`);
+
+  const breakLine1 = document.createElement("br");
+  breakLine1.classList.add(`delete${authorId}`);
+
+  const authorIsPresenterParagraph = document.createElement("p");
+  authorIsPresenterParagraph.textContent = `isPresenter:  ${author.presenter}`;
+  authorIsPresenterParagraph.classList.add(`delete${authorId}`);
+
+  const breakLine2 = document.createElement("br");
+  breakLine2.classList.add(`delete${authorId}`);
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
@@ -45,6 +69,13 @@ const showAllAuthors = (aName) => {
   showAllAuthorsDiv.appendChild(authorNameParagraph);
   showAllAuthorsDiv.appendChild(deleteButton);
   showAllAuthorsDiv.appendChild(breakLine);
+  showAllAuthorsDiv.appendChild(authorEmailParagraph);
+  showAllAuthorsDiv.appendChild(breakLine1);
+  showAllAuthorsDiv.appendChild(authorAffilationParagraph);
+  showAllAuthorsDiv.appendChild(breakLine2);
+  showAllAuthorsDiv.appendChild(authorIsPresenterParagraph);
+  showAllAuthorsDiv.appendChild(breakLine3);
+  showAllAuthorsDiv.appendChild(breakLine4);
 };
 
 function handleDeleteButtonClick(index, authorId) {
@@ -58,11 +89,14 @@ function handleDeleteButtonClick(index, authorId) {
 let allAuthors = [];
 const addAuthor = () => {
   if (firstName.value && lastName.value && email.value && affiliation.value) {
+    affiliationName = allInstiutions.filter((item) => {
+      return item.id == affiliation.value;
+    });
     let author = {
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value,
-      affiliation: affiliation.value,
+      affiliation: `${affiliation.value}. ${affiliationName[0].name}`,
       presenter: presenter.checked,
     };
 
@@ -72,8 +106,9 @@ const addAuthor = () => {
     email.value = "";
     affiliation.value = "";
     presenter.checked = false;
+    affiliationName = "";
 
-    showAllAuthors(author.firstName);
+    showAllAuthors(author);
   } else {
     alert("Please fill all fields");
   }
