@@ -155,7 +155,7 @@ form.addEventListener("submit", async (event) => {
   };
 
   await addDataToJson(myObj);
-  alert("Developed By Kashif_65 ( Fiverr.com ) ");
+  alert("Form submitted ");
   allAuthors = [];
   form.reset();
   remove();
